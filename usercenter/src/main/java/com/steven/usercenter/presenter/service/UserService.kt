@@ -4,5 +4,5 @@ import rx.Observable
 
 
 interface UserService {
-    fun register(mobile:String,vertifyCode:String,pwd:String): Observable<Boolean>
+    fun register(mobile: String, pwd: String, vertifyCode: String): Observable<Boolean>
 }
