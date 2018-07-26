@@ -43,4 +43,8 @@ dependencies {
     // Appcompat-v7 (only Anko Commons)
     implementation "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version"
 
+    // RxKotlin and RxAndroid
+    implementation "io.reactivex:rxkotlin:$rx_kotlin_version"
+    implementation "io.reactivex:rxandroid:${rx_android_version}"
+
 }

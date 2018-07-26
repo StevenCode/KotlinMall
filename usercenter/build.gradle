@@ -46,9 +46,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(':provider')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
-
     // Anko Commons
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
     // Anko Layouts
@@ -59,4 +57,9 @@ dependencies {
     implementation "org.jetbrains.anko:anko-support-v4-commons:$anko_version"
     // Appcompat-v7 (only Anko Commons)
     implementation "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version"
+    implementation project(':provider')
+    implementation project( ':baselibrary')
+    // RxKotlin and RxAndroid
+    implementation "io.reactivex:rxkotlin:$rx_kotlin_version"
+    implementation "io.reactivex:rxandroid:${rx_android_version}"
 }
