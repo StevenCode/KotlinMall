@@ -6,11 +6,14 @@ import com.steven.usercenter.data.respository.UserRespository
 import com.steven.usercenter.presenter.service.UserService
 import rx.Observable
 import rx.functions.Func1
+import javax.inject.Inject
 
-class UserServiceImpl : UserService {
+class UserServiceImpl @Inject constructor(): UserService {
+    @Inject
+    lateinit var respository:UserRespository
+
     override fun register(mobile: String, pwd: String, vertifyCode: String): Observable<Boolean> {
 
-        val respository = UserRespository()
         return respository.register(mobile, pwd, vertifyCode)
                 .flatMap(object : Func1<BaseResp<String>, Observable<Boolean>> {
                     override fun call(t: BaseResp<String>): Observable<Boolean> {

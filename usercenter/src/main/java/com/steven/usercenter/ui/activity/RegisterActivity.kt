@@ -7,6 +7,8 @@ import com.steven.baselibrary.ui.activity.BaseMvpActivity
 import org.jetbrains.anko.toast
 import com.steven.usercenter.R
 import com.steven.usercenter.R.id.mRegister
+import com.steven.usercenter.injection.component.DaggerUserComponet
+import com.steven.usercenter.injection.module.UserModule
 import com.steven.usercenter.presenter.RegisterPresenter
 import com.steven.usercenter.presenter.view.RegisterView
 
@@ -24,10 +26,15 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>() ,RegisterView{
         setContentView(R.layout.activity_register)
 
         mPresenter = RegisterPresenter()
-        mPresenter.mView = this
+        initInjection()
 
         mRegister.setOnClickListener{
             mPresenter.register(mMobileEt.text.toString(),mVertifyCodeEt.text.toString(),mPwdEt.text.toString())
         }
+    }
+
+    private fun initInjection() {
+        DaggerUserComponet.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
+        mPresenter.mView = this
     }
 }
